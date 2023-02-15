@@ -1,0 +1,33 @@
+<mat-toolbar color="accent">Create New coupon</mat-toolbar>
+<div mat-dialog-content>
+    <p>Enter Coupon Code:</p>
+    <mat-form-field>
+        <mat-label>Code</mat-label>
+        <input matInput type="text" [(ngModel)]="data.code">
+    </mat-form-field>
+    <p>Enter Discount Amount ($):</p>
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" [(ngModel)]="data.discount">
+    </mat-form-field>
+    <p>Enter Minimum Order Total ($):</p>
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" [(ngModel)]="data.orderTotalMinimum">
+    </mat-form-field>
+    <p>Enter a Start and End Date: </p>
+    <mat-form-field>
+        <mat-label>Enter a date range:</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate [(ngModel)]="data.startDate" placeholder="Start date">
+            <input matEndDate [(ngModel)]="data.endDate" placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data">Submit</button>
+</div>

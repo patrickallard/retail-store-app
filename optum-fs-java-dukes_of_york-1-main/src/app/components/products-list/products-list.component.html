@@ -1,0 +1,28 @@
+<button mat-raised-button color="primary" *ngIf="accountService.userIsShopkeeper() && !productService.creatingProduct"
+    (click)="productService.creatingProduct = true" class="create-button">Create New Product</button>
+<app-create-product *ngIf="productService.creatingProduct"></app-create-product>
+
+<button mat-raised-button color="warn" *ngIf="productService.categoryFilter !== ''" (click)="productService.setFilter('')"
+    class="create-button">Unfilter Products</button>
+
+<div class="container">
+
+    <div class="list">
+        <app-product *ngFor="let product of filterProducts()" [product]="product"></app-product>
+    </div>
+
+    <div *ngIf="accountService.userIsShopkeeper() && getWarnings() && errorExists">
+        <mat-card class="errors">
+            <mat-card-content>
+                <h2>Warning:</h2>
+                <div *ngFor="let product of this.lossProducts">
+                    <p style="color: red">{{product.name}} is currently selling at a loss.</p>
+                </div>
+                <div *ngFor="let product of this.mapProducts">
+                    <p style="color: red">{{product.name}} is currently selling at a lower price than its minimum
+                        advertised price.</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

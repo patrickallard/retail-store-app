@@ -1,0 +1,50 @@
+PUT http://localhost:8080/products/1
+Content-Type: application/json
+
+{
+  "name": "name1",
+  "category": "category",
+  "price": 10.00,
+  "availabilityDate": "2022-12-29",
+  "description": "description",
+  "discontinued": false,
+  "images": "images",
+  "scheduledMaps": "maps",
+  "scheduledPrices": "prices",
+  "scheduledSales": "sales",
+  "shipmentCost": "cost"
+}
+
+###
+
+PUT http://localhost:8080/shipment/1
+Content-Type: application/json
+
+{
+  "productId": 70,
+  "quantity": 20,
+  "cost": 9.50,
+  "date": "2022-12-30"
+}
+
+###
+
+PUT http://localhost:8080/category/1
+Content-Type: application/json
+
+{
+  "name": "updated category name"
+}
+###
+PUT http://localhost:8080/coupons/3
+Content-Type: application/json
+
+{
+  "code": "save20",
+  "discount":"20",
+  "orderTotalMinimum": "300",
+  "startDate": "2023-01-10",
+  "endDate": "2023-03-10"
+}
+###
+

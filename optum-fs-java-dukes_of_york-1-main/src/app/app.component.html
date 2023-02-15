@@ -1,0 +1,9 @@
+<app-toolbar></app-toolbar>
+<app-login *ngIf="ui.displayLogin"></app-login>
+<app-register *ngIf="ui.displayRegister"></app-register>
+<app-cart *ngIf="ui.displayCart"></app-cart>
+<app-category-list *ngIf="this.ui.displayCategories"></app-category-list>
+<app-profile *ngIf="ui.displayAccount"></app-profile>
+<app-orders *ngIf="ui.displayOrders"></app-orders>
+<app-coupon *ngIf="this.ui.displayCoupons"></app-coupon>
+<app-products-list *ngIf="ui.displayProducts"></app-products-list>

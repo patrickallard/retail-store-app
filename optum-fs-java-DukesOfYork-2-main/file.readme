@@ -1,0 +1,40 @@
+Description: This application will support a small online only business to keep track of its inventory and serve its customers.
+There are three types of users: administrators, shopkeepers, and customers.
+Administrators need to be able to manage all types of user accounts. Shop keepers must be able to manage all aspects of inventory, sales, and custOrder fulfillment.
+Customers must be able to place orders as guests, or with a customer account.
+
+Requirements:
+
+An administrator shall be able to:
+() Create/Edit/Delete all user accounts except for deleting or deescalating their own account
+
+A shopkeeper shall be able to:
+() Create/Edit/Delete product categories
+() Create/Edit/Delete inventory
+() Create/Edit/Delete coupon codes with start/stop dates and use limits
+() View errors/warnings:
+    ▪ An item is selling for a loss
+    ▪ An item is advertised at a lower price than MAP
+
+A customer shall be able to:
+() View all available inventory with:
+    ▪ Current price
+    ▪ Current sale
+    ▪ Description
+    ▪ Discontinued status
+    ▪ Categories
+() Add any available inventory to their cart.
+() View/Edit/Delete items in their cart
+() View total cost of their cart
+() Checkout
+() Create/Edit/Delete their account
+() View past orders and their current cart contents if they are signed into their account
+
+Each inventory entry shall track:
+() Scheduled minimum advertised prices (each MAP shall have an effective on date) Scheduled Prices (each Price shall have an effective date)
+() Scheduled Sales (each Sale shall have an effective on date)
+() Description
+() Images
+() Quantities at cost (not all shipments cost the same) Discontinued status
+() Available on date
+() Categories

@@ -1,0 +1,20 @@
+<mat-card class="card">
+    <mat-card-header>
+      <mat-card-title> First Name: {{ account?.fname }}</mat-card-title>
+      <mat-card-subtitle> Last Name: {{ account?.lname }} </mat-card-subtitle>
+      <!-- could write a function here to retrieve association (account id) <-> account name -->
+      <mat-card-subtitle type="string"> 
+        Email: 
+        {{ account?.email }}
+      </mat-card-subtitle>
+      <mat-card-subtitle type="string"> 
+        Role: 
+        {{ account?.role }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button color='warn' (click)="accountService.displayAccountEdit()"><mat-icon>edit</mat-icon></button>
+      <!-- TODO: Add NgIf that checks for user status, if Admin or Shopkeeper, display -->
+      <button mat-button color='warn' (click)="accountService.deleteAccountById(account?.id!)"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+</mat-card>

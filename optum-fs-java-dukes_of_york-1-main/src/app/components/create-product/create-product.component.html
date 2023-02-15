@@ -1,0 +1,53 @@
+<mat-card class="product-create">
+    <mat-card-content>
+        <div class="container">
+
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>List Price</mat-label>
+                <input matInput type="number" [(ngModel)]="price">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Initial MAP Price</mat-label>
+                <input matInput type="number" [(ngModel)]="MAP">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Availability Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="available">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Product Description</mat-label>
+                <input matInput [(ngModel)]="description">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Image URL</mat-label>
+                <input matInput [(ngModel)]="imageURL">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" *ngIf="ui.categorySubject.getValue().length > 0">
+                <mat-label>Category</mat-label>
+                <mat-select [(ngModel)]="category">
+                  <mat-option *ngFor="let cat of ui.categorySubject.getValue()" [value]="cat">
+                    {{cat.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="createProduct()"
+                class="execute-button">Create</button>
+            <button mat-raised-button color="warn" (click)="productService.creatingProduct = false"
+                class="execute-button">Cancel</button>
+
+        </div>
+    </mat-card-content>
+</mat-card>

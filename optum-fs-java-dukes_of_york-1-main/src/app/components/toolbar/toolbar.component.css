@@ -1,0 +1,23 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+
+.user {
+    font-size: small;
+}
+
+#date {
+    font-size: small;
+}
+
+mat-drawer-container {
+    position: static;
+}
+mat-drawer {
+    width: 300px;
+}

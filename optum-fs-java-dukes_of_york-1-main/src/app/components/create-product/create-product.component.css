@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-flow: column;
+}
+
+.product-create {
+    max-width: 500px;
+    margin: 20px;
+}
+
+.execute-button {
+    max-width: 80px;
+    margin: 5px;
+}

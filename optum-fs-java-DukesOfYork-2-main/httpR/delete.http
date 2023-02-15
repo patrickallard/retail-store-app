@@ -1,0 +1,16 @@
+DELETE http://localhost:8080/orders/104
+Accept: application/json
+###
+
+DELETE http://localhost:8080/products/1
+Accept: application/json
+###
+
+DELETE http://localhost:8080/shipment/4
+Accept: application/json
+###
+
+DELETE http://localhost:8080/coupons/6
+Accept: application/json
+###
+

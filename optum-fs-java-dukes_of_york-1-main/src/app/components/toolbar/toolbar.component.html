@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <span class="spacer"></span>
+    <button mat-button class="title" (click)="ui.showProducts()">Dukes of York</button>
+    <span class="spacer"></span>
+    <button mat-icon-button matTooltip="Logout" (click)="this.accountService.logoutUser(); ui.showProducts(); this.cartService.logoutCart();"
+        *ngIf="this.accountService.isLoggedIn"><mat-icon>logout</mat-icon></button>
+    <button mat-icon-button matTooltip="Login" (click)="ui.showLogin()"
+        *ngIf="!this.accountService.isLoggedIn"><mat-icon>login</mat-icon></button>
+    <button *ngIf="accountService.currentUser.getValue().role != 1 && accountService.currentUser.getValue().role != 2"
+        (click)="ui.showCart();" mat-icon-button matTooltip="My Cart"><mat-icon matBadge={{totalItem}}
+            matBadgeSize="small" matBadgeColor="warn">shopping_cart</mat-icon></button>
+    <button *ngIf="accountService.currentUser.getValue().role != -1" (click)="ui.showAccount()" mat-icon-button
+        matTooltip="View Account Details"><mat-icon>settings</mat-icon></button>
+</mat-toolbar>
+<mat-toolbar color="accent" style="height: 20px;">
+    <span id="date"></span>
+    <marquee direction="left" behavior="scroll" *ngIf="this.couponService.showMarquee">
+        <span *ngFor="let coupon of this.couponService.getCoupons() | async" >
+            <span>---- Use code "{{coupon.code}}" for {{coupon.discount | currency}} off of an order of 
+            {{coupon.orderTotalMinimum | currency}} or More ----</span>
+        </span>
+    </marquee>
+    <span class="spacer"></span>
+    <span class=user *ngIf="this.accountService.getCurrentUser() | async as user">Welcome, {{user.fname}}</span>
+</mat-toolbar>
+<mat-drawer-container hasBackdrop="true" autosize>
+    <mat-drawer #drawer mode="side">
+        <mat-toolbar color="accent">
+            <span *ngIf="this.accountService.getCurrentUser() | async as user">Welcome, {{user.fname}}</span>
+            <span class="spacer"></span>
+            <button mat-icon-button><mat-icon>account_box</mat-icon></button>
+        </mat-toolbar>
+        <!-- DEFAULT NAVIGATION -->
+        <ul>
+            <button mat-button (click)="ui.showProducts()"><h2>View All Products</h2></button>
+            <h2>Shop by Category</h2>
+            <li *ngFor="let category of this.ui.getCategories() | async">
+                <button mat-button (click)="this.ui.filterProducts(category)">{{category.name}}</button>
+            </li>
+        </ul>
+        <!-- SHOPKEEPER NAVIGATION HERE -->
+        <div *ngIf="this.accountService.currentUser.value.role === 1">
+            <ul>
+                <h2>Store Management</h2>
+                <li><button mat-button (click)="this.ui.showCategories()">Manage Categories</button></li>
+                <li><button mat-button (click)="this.ui.showCoupons()">Manage Coupons</button></li>
+            </ul>
+        </div>
+    </mat-drawer>
+</mat-drawer-container>

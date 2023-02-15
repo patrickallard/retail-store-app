@@ -1,0 +1,41 @@
+<form (submit)="registerUser()" class="mat-elevation-z8">
+    <mat-toolbar color="primary">Register</mat-toolbar>
+    <div class="form-fields">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="newUser.fname" name="fname" type="text" placeholder="ex. John" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="newUser.lname" name="lname" type="text" placeholder="ex. Johnson" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="newUser.email" name="email" type="text" placeholder="example@example.com"
+                required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="newUser.password" name="password" [type]="hide ? 'password' : 'text' "
+                required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility' }} </mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Role</mat-label>
+            <mat-select [(ngModel)]="newUser.role" name="role" required>
+                <mat-option [value]=0>Customer</mat-option>
+                <mat-option [value]=1>Shopkeeper</mat-option>
+                <mat-option [value]=2>Admin</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="form-buttons">
+        <button mat-raised-button type="submit" color="accent" style="margin-top: 10px;">Register</button>
+        <button mat-raised-button type="button" color="primary" style="margin-top: 10px"
+            (click)="this.ui.showLogin()">Have an account? Login Here</button>
+        <button mat-raised-button type="button" style="margin-top: 10px; margin-bottom: 10px;"
+            (click)="this.ui.showProducts()"> Go Back</button>
+    </div>
+</form>

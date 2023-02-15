@@ -1,0 +1,101 @@
+POST http://localhost:8080/coupons
+Content-Type: application/json
+
+{
+  "code": "5678",
+  "discount":"20",
+  "orderTotalMinimum": "200",
+  "startDate": "2023-01-29",
+  "endDate": "2023-03-29"
+}
+###
+
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "email": "you@biteme.com",
+  "date": "2022-12-29",
+  "products": [],
+  "orderTotal": 500
+}
+###
+
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "email": "you@biteme.com",
+  "date": "2022-12-29",
+  "products": "even more products",
+  "orderTotal": "250"
+
+}
+###
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "name4",
+  "category": "category",
+  "price": 10.00,
+  "availabilityDate": "2022-12-29",
+  "description": "description",
+  "discontinued": false,
+  "images": "images",
+  "scheduledMaps": "maps",
+  "scheduledPrices": "prices",
+  "scheduledSales": "sales",
+  "shipmentCost": "cost"
+}
+
+###
+
+POST http://localhost:8080/shipment
+Content-Type: application/json
+
+{
+  "productId": 90,
+  "quantity": 6009,
+  "cost": 1200.50,
+  "date": "2022-12-30"
+}
+
+###
+
+POST http://localhost:8080/category
+Content-Type: application/json
+
+{
+  "name": "fruits"
+}
+###
+
+POST http://localhost:8080/category
+Content-Type: application/json
+
+{
+  "name": "vegetables"
+}
+###
+
+POST http://localhost:8080/category
+Content-Type: application/json
+
+{
+  "name": "meat"
+}
+###
+
+
+POST http://localhost:8080/price
+Content-Type: application/json
+
+{
+  "price": 2.37,
+  "date":"2022-12-30"
+
+}
+###
+

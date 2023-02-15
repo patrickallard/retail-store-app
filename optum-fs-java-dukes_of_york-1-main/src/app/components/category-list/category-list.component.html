@@ -1,0 +1,43 @@
+<div class="table-container">
+    <mat-toolbar color="primary" class="mat-elevation-z8">Category Management</mat-toolbar>
+    <mat-toolbar class="mat-elevation-z8" style="height: fit-content">
+        <mat-form-field style="margin-top: 10px;">
+            <mat-label>Filter</mat-label>
+            <input matInput type="text" (keyup)="applyFilter($event)" placeholder="search" #search>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <button mat-raised-button color="accent" (click)="displayCreateCategory()">New Category <mat-icon>add</mat-icon></button>
+    </mat-toolbar>
+    <mat-toolbar *ngIf="displayNewCategory" class="mat-elevation-z8" color="accent">
+        <mat-toolbar-row>
+            New Category
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <mat-form-field style="margin-top: 20px">
+                <mat-label>Category Name</mat-label>
+                <input matInput type="text" [(ngModel)]="newCategory.name">
+            </mat-form-field>
+            <button mat-icon-button (click)="addCategory()" matTooltip="Save"><mat-icon>save</mat-icon></button>
+            <button mat-icon-button (click)="displayNewCategory = !displayNewCategory" matTooltip="Cancel"><mat-icon>cancel</mat-icon></button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+        
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" #table>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Name">Name</th>
+            <td mat-cell *matCellDef="let category">
+                <span #name>{{category.name}}</span>
+                <button #edit mat-icon-button (click)="editCategory(name,edit,category)">
+                    <mat-icon style="scale: .75;">edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by Name">Delete</th>
+            <td mat-cell *matCellDef="let category"><button mat-icon-button
+                    (click)="deleteCategory(category.id)"><mat-icon>delete</mat-icon></button></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+</div>

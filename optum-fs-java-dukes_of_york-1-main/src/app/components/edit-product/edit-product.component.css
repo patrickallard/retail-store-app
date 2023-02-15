@@ -1,0 +1,37 @@
+.table-container {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+}
+
+.execute-button {
+    margin: 5px;
+    max-width: 40px;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-button {
+    margin: 5px;
+    max-width: 250px;
+}
+
+mat-form-field {
+    margin-top: 20px;
+}

@@ -1,0 +1,23 @@
+GET http://localhost:8080/orders
+Accept: application/json
+###
+
+GET http://localhost:8080/orders/user/you@biteme.com
+Accept: application/json
+###
+
+GET http://localhost:8080/orders/500
+Accept: application/json
+###
+=======
+GET http://localhost:8080/products
+Accept: application/json
+###
+
+GET http://localhost:8080/shipment
+Accept: application/json
+###
+
+GET http://localhost:8080/coupons/code/d5e8r
+Accept: application/json
+###

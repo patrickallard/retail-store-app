@@ -1,0 +1,67 @@
+<!-- show this when there something in cart "products.length !=0"-->
+<ng-container *ngIf="getProducts() && products.length != 0"> 
+    <div class="card">
+        <div class="container">
+            <div class ="card-table" >
+                <div class="cart-product">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr class="space">
+                                <th>Product Name: </th>
+                                <th>Product Image: </th>
+                                <th>Price: </th>
+                                <th>Action: </th>
+                            </tr>
+                        </thead>
+                         <!-- "https://www.dictionary.com/e/wp-content/uploads/2018/03/rickrolling.jpg" if you want to use rick-->
+                        <tbody>
+                            <tr *ngFor=" let product of products; let  i = index">
+                                <td>{{product.name}}</td>
+                                <td><img src ={{product.image}} style="width: 100px; height: 100px"></td>
+                                <th>{{productService.getCurrentPrice(product) | currency}}</th>
+                                <td><button mat-button  color="warn" (click)="cartService.removeCartProduct(product)"><mat-icon>delete</mat-icon></button></td>
+                            </tr>
+                            <tr>
+                                <td colspan ="4"></td>
+                                <div *ngIf="!couponApplied">
+                                <td><label for="coupon-code"></label></td>
+                                <td><input type="text" [(ngModel)]="couponCode"></td>
+                                <td><button mat-raised-button color="primary" type="submit" (click)="checkCode()">Apply Coupon</button></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                                <td><strong>Subtotal: {{grandTotal| currency}}</strong></td>
+                            </tr>
+                            <tr> 
+                                <td colspan="2"></td>
+                                <td><button mat-raised-button color="warn" (click)="cartService.removeAllCart()"> Empty Cart</button></td>
+                                <td><button mat-raised-button color="basic" (click)="ui.showProducts()"> Shop More</button></td>
+                                <td><button mat-raised-button color="primary" (click)="cartService.checkout()"> Checkout</button></td>
+                            </tr>
+                            <td colspan="4"></td>
+                            <td><div class="table table-responsive"><button mat-raised-button color="accent" (click)="ui.showProducts()">Go back </button></div></td>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+    </div>
+</ng-container>
+
+<!-- show this when theres nothing in cart "products.length ==0" -->
+<ng-container *ngIf="products.length == 0"> 
+    <div class ="container">
+        <div class="card">
+        <div class="center">
+            <h1 class="card-title"> Shopping Cart</h1>
+            <h4> Your cart is empty!</h4>
+            <h4> Have an account? Sign in to see your cart </h4>
+            <h4><button mat-raised-button  color="primary" (click)="ui.showLogin()"> Sign In </button></h4>
+            <img src = "https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_960_720.png" alt="cart">
+            <div><button mat-raised-button color="accent" (click)="ui.showProducts()">Go back</button></div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+

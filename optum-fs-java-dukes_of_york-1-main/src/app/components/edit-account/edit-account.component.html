@@ -1,0 +1,31 @@
+<mat-toolbar color="accent">Edit Account</mat-toolbar>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label> First Name: </mat-label>
+        <input matInput placeholder="{{fname.valueOf()}}" type='text' #firstname
+            (keyup)="updateFirstName(firstname.value)" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label> Last Name: </mat-label>
+        <input matInput placeholder="{{lname.valueOf()}}" type='text' #lastname
+            (keyup)="updateLastName(lastname.value)" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label> Email: </mat-label>
+        <input matInput placeholder="{{email.valueOf()}}" #emails (keyup)="updateEmail(emails.value)" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label> Password: </mat-label>
+        <input matInput placeholder="{{password.valueOf()}}" #passwords (keyup)="updatePassword(passwords.value)" />
+    </mat-form-field>
+    <mat-form-field *ngIf="(this.accountService.currentUser.value.role == 2 && !(this.accountService.currentUser.value.id == this.accountService.accountEdit.id))">
+        <mat-label> Role: </mat-label>
+        <input matInput placeholder="{{role.valueOf()}}" #roles (keyup)="updateRole(+roles.value)" />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <mat-card-actions>
+        <button mat-raised-button mat-dialog-close (click)="onApply()">Apply</button>
+        <button mat-raised-button mat-dialog-close (click)="onCancel()">Cancel</button>
+    </mat-card-actions>
+</div>
